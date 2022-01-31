@@ -5,7 +5,7 @@ services:
     container_name: socialnetwork_dev_postgres
     image: postgres
     networks:
-      - network
+      - socialnetwork
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
