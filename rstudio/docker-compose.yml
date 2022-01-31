@@ -1,0 +1,35 @@
+version: "3.6"
+
+services:
+  rstudio:
+    image: rocker/rstudio:4.0.3
+    container_name: rstudio
+    restart: on-failure
+    volumes:
+      - type: volume
+        source: rstudio
+        target: /home/rstudio
+        volume:
+          no-copy: true
+      - type: bind
+        source: ./rstudio
+        target: /home/rstudio/projects
+      - type: volume
+        source: r_libs
+        target: /usr/local/lib/R
+        volume:
+          no-copy: true
+    networks:
+      - net
+    environment:
+      - USER=admin
+      - PASSWORD=admin
+    ports:
+      - 8787:8787
+
+networks: 
+  net:
+
+volumes:
+  r_libs:
+  rstudio:

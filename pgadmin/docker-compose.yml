@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+ pgadmin:
+   container_name: pgadmin
+   image: dpage/pgadmin4
+   restart: always
+   environment:
+     PGADMIN_DEFAULT_EMAIL: admin@admin.com
+     PGADMIN_DEFAULT_PASSWORD: admin
+     PGADMIN_LISTEN_PORT: 5434
+   ports:
+     - 54000:5434
+   networks:
+     - postgres_hub
+volumes:
+  pgdata: {}
+
+networks:
+  postgres_hub:
+    external: true
